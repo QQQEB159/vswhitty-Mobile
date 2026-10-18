@@ -93,6 +93,8 @@ class LoadReplayState extends MusicBeatState
 
 		changeSelection(0);
 
+		addTouchPad("UP_DOWN", "A_B");
+		
 		super.create();
 	}
 
