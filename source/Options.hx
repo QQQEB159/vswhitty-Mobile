@@ -626,13 +626,13 @@ class TouchPadAlphaOption extends Option
 	override function right():Bool {
 		FlxG.save.data.touchPadAlpha += 0.1;
 
-		if (FlxG.save.data.touchPadAlpha < 0.1)
-			FlxG.save.data.touchPadAlpha = 0.1;
+		if (FlxG.save.data.touchPadAlpha < 0)
+			FlxG.save.data.touchPadAlpha = 0;
 
 		if (FlxG.save.data.touchPadAlpha > 1)
 			FlxG.save.data.touchPadAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0.1) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0) + " - Description - " + description;
 		MusicBeatState.getState().touchPad.alpha = FlxG.save.data.touchPadAlpha;
 
 		return true;
@@ -641,13 +641,13 @@ class TouchPadAlphaOption extends Option
 	override function left():Bool {
 		FlxG.save.data.touchPadAlpha -= 0.1;
 
-		if (FlxG.save.data.touchPadAlpha < 0.1)
-			FlxG.save.data.touchPadAlpha = 0.1;
+		if (FlxG.save.data.touchPadAlpha < 0)
+			FlxG.save.data.touchPadAlpha = 0;
 
 		if (FlxG.save.data.touchPadAlpha > 1)
 			FlxG.save.data.touchPadAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0.1) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0) + " - Description - " + description;
 		MusicBeatState.getState().touchPad.alpha = FlxG.save.data.touchPadAlpha;
 
 		return true;
@@ -676,13 +676,13 @@ class HitboxAlphaOption extends Option
 	override function right():Bool {
 		FlxG.save.data.hitboxAlpha += 0.1;
 
-		if (FlxG.save.data.hitboxAlpha < 0.1)
-			FlxG.save.data.hitboxAlpha = 0.1;
+		if (FlxG.save.data.hitboxAlpha < 0)
+			FlxG.save.data.hitboxAlpha = 0;
 
 		if (FlxG.save.data.hitboxAlpha > 1)
 			FlxG.save.data.hitboxAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0.1) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0) + " - Description - " + description;
 
 		return true;
 	}
@@ -690,13 +690,13 @@ class HitboxAlphaOption extends Option
 	override function left():Bool {
 		FlxG.save.data.hitboxAlpha -= 0.1;
 
-		if (FlxG.save.data.hitboxAlpha < 0.1)
-			FlxG.save.data.hitboxAlpha = 0.1;
+		if (FlxG.save.data.hitboxAlpha < 0)
+			FlxG.save.data.hitboxAlpha = 0;
 
 		if (FlxG.save.data.hitboxAlpha > 1)
 			FlxG.save.data.hitboxAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0.1) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0) + " - Description - " + description;
 
 		return true;
 	}
