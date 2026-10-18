@@ -620,7 +620,7 @@ class TouchPadAlphaOption extends Option
 
 	private override function updateDisplay():String
 	{
-		return "TouchPad Opacity - " + FlxG.save.data.touchPadAlpha;
+		return "TouchPad Opacity";
 	}
 
 	override function right():Bool {
@@ -632,7 +632,7 @@ class TouchPadAlphaOption extends Option
 		if (FlxG.save.data.touchPadAlpha > 1)
 			FlxG.save.data.touchPadAlpha = 1;
 		
-		display = "TouchPad Opacity - " + FlxG.save.data.touchPadAlpha;
+		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0.1) + " - Description - " + description;
 		MusicBeatState.getState().touchPad.alpha = FlxG.save.data.touchPadAlpha;
 
 		return true;
@@ -647,7 +647,7 @@ class TouchPadAlphaOption extends Option
 		if (FlxG.save.data.touchPadAlpha > 1)
 			FlxG.save.data.touchPadAlpha = 1;
 		
-		display = "TouchPad Opacity - " + FlxG.save.data.touchPadAlpha;
+		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0.1) + " - Description - " + description;
 		MusicBeatState.getState().touchPad.alpha = FlxG.save.data.touchPadAlpha;
 
 		return true;
@@ -670,7 +670,7 @@ class HitboxAlphaOption extends Option
 
 	private override function updateDisplay():String
 	{
-		return "Hitbox Opacity - " + FlxG.save.data.hitboxAlpha;
+		return "Hitbox Opacity";
 	}
 
 	override function right():Bool {
@@ -682,7 +682,7 @@ class HitboxAlphaOption extends Option
 		if (FlxG.save.data.hitboxAlpha > 1)
 			FlxG.save.data.hitboxAlpha = 1;
 		
-		display = "Hitbox Opacity - " + FlxG.save.data.hitboxAlpha;
+		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0.1) + " - Description - " + description;
 
 		return true;
 	}
@@ -696,7 +696,7 @@ class HitboxAlphaOption extends Option
 		if (FlxG.save.data.hitboxAlpha > 1)
 			FlxG.save.data.hitboxAlpha = 1;
 		
-		display = "Hitbox Opacity - " + FlxG.save.data.hitboxAlpha;
+		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0.1) + " - Description - " + description;
 
 		return true;
 	}
