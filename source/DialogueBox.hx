@@ -10,6 +10,8 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
+import mobile.TouchUtil;
+
 using StringTools;
 
 class DialogueBox extends FlxSpriteGroup
@@ -278,7 +280,7 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueStarted = true;
 		}
 
-		if (FlxG.keys.justPressed.ANY)
+		if (FlxG.keys.justPressed.ANY || TouchUtil.justPressed)
 		{
 			remove(dialogue);
 

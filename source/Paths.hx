@@ -4,6 +4,9 @@ import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
+import lime.utils.Assets;
+
+using StringTools;
 
 class Paths
 {
@@ -15,15 +18,21 @@ class Paths
 	{
 		currentLevel = name.toLowerCase();
 	}
+
 	static function getPath(file:String, type:AssetType, library:Null<String>)
 	{
+		if (library == "mobile")
+			return getPreloadPath('mobile/$file');
+		
 		if (library != null)
 			return getLibraryPath(file, library);
+
 		if (currentLevel != null)
 		{
 			var levelPath = getLibraryPathForce(file, currentLevel);
 			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
+
 			levelPath = getLibraryPathForce(file, "shared");
 			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
@@ -42,33 +51,26 @@ class Paths
 		return '$library:assets/$library/$file';
 	}
 
-	inline static function getPreloadPath(file:String)
+	inline static public function getPreloadPath(file:String)
 	{
 		return 'assets/$file';
 	}
+
 	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
 	{
 		return getPath(file, type, library);
-	}
-
-	inline static public function lua(key:String,?library:String)
-	{
-		return getPath('data/$key.lua', TEXT, library);
-	}
-
-	inline static public function luaImage(key:String, ?library:String)
-	{
-		return getPath('data/$key.png', IMAGE, library);
 	}
 
 	inline static public function txt(key:String, ?library:String)
 	{
 		return getPath('data/$key.txt', TEXT, library);
 	}
+
 	inline static public function xml(key:String, ?library:String)
 	{
 		return getPath('data/$key.xml', TEXT, library);
 	}
+
 	inline static public function json(key:String, ?library:String)
 	{
 		return getPath('data/$key.json', TEXT, library);
@@ -83,32 +85,60 @@ class Paths
 	{
 		return sound(key + FlxG.random.int(min, max), library);
 	}
+
 	inline static public function music(key:String, ?library:String)
 	{
 		return getPath('music/$key.$SOUND_EXT', MUSIC, library);
 	}
+
 	inline static public function voices(song:String)
 	{
 		return 'songs:assets/songs/${song.toLowerCase()}/Voices.$SOUND_EXT';
 	}
+
 	inline static public function inst(song:String)
 	{
 		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
 	}
+
 	inline static public function image(key:String, ?library:String)
 	{
 		return getPath('images/$key.png', IMAGE, library);
 	}
+
 	inline static public function font(key:String)
 	{
 		return 'assets/fonts/$key';
 	}
+
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
 	}
+
 	inline static public function getPackerAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
+	}
+	
+	public static function readDirectory(directory:String):Array<String>
+	{
+		/*#if MODS_ALLOWED
+		return FileSystem.readDirectory(directory);
+		#else*/
+		var dirs:Array<String> = [];
+		for (dir in Assets.list().filter(folder -> folder.startsWith(directory)))
+		{
+			@:privateAccess
+			for (library in lime.utils.Assets.libraries.keys())
+			{
+				if (library != 'default' && Assets.exists('$library:$dir') && (!dirs.contains('$library:$dir') || !dirs.contains(dir)))
+					dirs.push('$library:$dir');
+				else if (Assets.exists(dir) && !dirs.contains(dir))
+					dirs.push(dir);
+			}
+		}
+		return dirs.map(dir -> dir.substr(dir.lastIndexOf("/") + 1));
+		//#end
 	}
 }

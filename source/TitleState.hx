@@ -56,8 +56,8 @@ class TitleState extends MusicBeatState
 		#end
 		
 		#if sys
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
+		if (!sys.FileSystem.exists(Sys.getCwd() + "assets/replays"))
+			sys.FileSystem.createDirectory(Sys.getCwd() + "assets/replays");
 		#end
 
 		@:privateAccess
@@ -94,6 +94,8 @@ class TitleState extends MusicBeatState
 		KadeEngineData.initSave();
 
 		Highscore.load();
+		
+		mobile.MobileData.init();
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{

@@ -237,6 +237,8 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 165");
 
+		addTouchPad("LEFT_FULL", "A_B");
+		
 		super.create();
 	}
 

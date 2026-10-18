@@ -141,6 +141,9 @@ class ScoreScreenState extends MusicBeatState
         add(ratingBTxt);
         add(scoreTxt);
 
+		addTouchPad("UP_DOWN", "A_B");
+		addTouchPadCamera();
+		
 		super.create();
 	}
 

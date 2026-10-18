@@ -25,7 +25,7 @@ class OptionsMenu extends MusicBeatState
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
-			#if desktop
+			#if sys
 			new FPSCapOption("Cap your FPS (Left for -10, Right for +10. SHIFT to go faster)"),
 			#end
 			new ScrollSpeedOption("Change your scroll speed (Left for -0.1, right for +0.1. If it's at 1, it will be chart dependent)"),
@@ -34,7 +34,7 @@ class OptionsMenu extends MusicBeatState
 			new CustomizeGameplay("Drag'n'Drop Gameplay Modules around to your preference")
 		]),
 		new OptionCatagory("Appearance", [
-			#if desktop
+			#if sys
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
 			new RainbowFPSOption("Make the FPS Counter Rainbow (Only works with the FPS Counter toggled on and Flashing Lights toggled off)"),
 			new AccuracyOption("Display accuracy information."),
@@ -46,13 +46,19 @@ class OptionsMenu extends MusicBeatState
 		]),
 		
 		new OptionCatagory("Misc", [
-			#if desktop
+			#if sys
 			new FPSOption("Toggle the FPS Counter"),
 			new ReplayOption("View replays"),
 			#end
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Turn off all watermarks from the engine."),
 			new BotPlay("Showcase your charts and mods with autoplay.")
+		]),
+		
+		new OptionCatagory("Mobile Options", [
+			new MobileControlOption("ported by qqqeb"),
+			new TouchPadAlphaOption("touchPad Alpha"),
+			new HitboxAlphaOption("Hitbox Alpha")
 		])
 		
 	];
@@ -93,6 +99,9 @@ class OptionsMenu extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
+		addTouchPad("LEFT_FULL", "A_B");
+		addTouchPadCamera();
+		
 		super.create();
 	}
 

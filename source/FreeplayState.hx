@@ -134,6 +134,8 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
+		addTouchPad("LEFT_FULL", "A_B");
+		
 		super.create();
 	}
 

@@ -64,6 +64,10 @@ import Sys;
 import sys.FileSystem;
 #end
 
+import mobile.TouchButton;
+import mobile.TouchPad;
+import mobile.input.MobileInputID;
+
 using StringTools;
 
 class PlayState extends MusicBeatState
@@ -220,6 +224,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		psych.Paths.clearStoredMemory();
+		
 		instance = this;
 		
 		if (FlxG.save.data.fpsCap > 290)
@@ -914,6 +920,13 @@ class PlayState extends MusicBeatState
 
 		// startCountdown();
 
+		#if !android
+		addTouchPad("NONE", "P");
+		addTouchPadCamera();
+		touchPad.visible = true;
+		#end
+		addMobileControls();
+		
 		generateSong(SONG.song);
 
 		// add(strumLine);
@@ -1137,6 +1150,8 @@ class PlayState extends MusicBeatState
 		if (!loadRep)
 			rep = new Replay("na");
 
+		psych.Paths.clearUnusedMemory();
+		
 		super.create();
 	}
 
@@ -1633,7 +1648,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		talking = false;
-		startedCountdown = true;
+		startedCountdown = mobileControls.instance.visible = true;
 		Conductor.songPosition = 0;
 		Conductor.songPosition -= Conductor.crochet * 5;
 
@@ -2253,7 +2268,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,accuracy);
-		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
+		if ((FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #else || touchPad.buttonP.justPressed #end) && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
@@ -2839,6 +2854,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		mobileControls.instance.visible = #if !android touchPad.visible = #end false;
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;

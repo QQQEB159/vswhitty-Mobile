@@ -107,6 +107,8 @@ class GameplayCustomizeState extends MusicBeatState
 
         FlxG.mouse.visible = true;
 
+        addTouchPad("NONE", "B");
+		addTouchPadCamera();
     }
 
     override function update(elapsed:Float) {
