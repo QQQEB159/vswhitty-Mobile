@@ -632,7 +632,7 @@ class TouchPadAlphaOption extends Option
 		if (FlxG.save.data.touchPadAlpha > 1)
 			FlxG.save.data.touchPadAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "TouchPad Opacity: " + FlxG.save.data.touchPadAlpha + " - Description - " + description;
 		MusicBeatState.getState().touchPad.alpha = FlxG.save.data.touchPadAlpha;
 
 		return true;
@@ -647,7 +647,7 @@ class TouchPadAlphaOption extends Option
 		if (FlxG.save.data.touchPadAlpha > 1)
 			FlxG.save.data.touchPadAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "TouchPad Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.touchPadAlpha,0) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "TouchPad Opacity: " + FlxG.save.data.touchPadAlpha + " - Description - " + description;
 		MusicBeatState.getState().touchPad.alpha = FlxG.save.data.touchPadAlpha;
 
 		return true;
@@ -682,7 +682,7 @@ class HitboxAlphaOption extends Option
 		if (FlxG.save.data.hitboxAlpha > 1)
 			FlxG.save.data.hitboxAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "Hitbox Opacity: " + FlxG.save.data.hitboxAlpha + " - Description - " + description;
 
 		return true;
 	}
@@ -696,7 +696,7 @@ class HitboxAlphaOption extends Option
 		if (FlxG.save.data.hitboxAlpha > 1)
 			FlxG.save.data.hitboxAlpha = 1;
 		
-		OptionsMenu.versionShit.text = "Hitbox Opacity: " + HelperFunctions.truncateFloat(FlxG.save.data.hitboxAlpha,0) + " - Description - " + description;
+		OptionsMenu.versionShit.text = "Hitbox Opacity: " + FlxG.save.data.hitboxAlpha + " - Description - " + description;
 
 		return true;
 	}
